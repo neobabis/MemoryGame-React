@@ -1,0 +1,27 @@
+@use "./mixins.scss" as mixin;
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 20px;
+
+    &.center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.h1 {
+    color: mixin.$brand_dark;
+    text-align: center;
+    font-family: "Literata", sans-serif;
+    font-size: 40px;
+    margin: 50px 0 50px 0;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}

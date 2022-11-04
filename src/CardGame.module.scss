@@ -1,0 +1,79 @@
+@use "./mixins.scss" as mixin;
+
+.new_game {
+    display: inline-block;
+    cursor: pointer;
+    overflow-wrap: break-word;
+    background-color: mixin.$brand;
+    color: white;
+    font-family: "Literata", sans-serif;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: none;
+    border: 2px solid mixin.$brand;
+    border-radius: 5px;
+    padding: 10px 60px;
+    min-width: 230px;
+    transition: all 0.3s cubic-bezier(0.16, 0.01, 0.77, 1);
+
+    align-self: center;
+
+    &:hover {
+        color: mixin.$brand;
+        background-color: white;
+    }
+}
+
+.cards_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+
+    @media only screen and (max-width: 767px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    margin: 50px 0 100px 0;
+
+    .card {
+        position: relative;
+        cursor: pointer;
+
+        .imgs_wrapper {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: block;
+                object-fit: cover;
+                border-radius: 10px;
+                border: 3px solid mixin.$brand_dark;
+            }
+        }
+        .img_front {
+            transform: rotateY(90deg);
+            transition: all ease-in 0.2s;
+            background-color: white;
+        }
+        .img_back {
+            transform: rotateY(0deg);
+            transition: all ease-in 0.2s;
+            transition-delay: 0.2s;
+            background-color: mixin.$brand_dark;
+        }
+
+        &.opened {
+            .img_front {
+                transform: rotateY(0deg);
+                transition-delay: 0.2s;
+            }
+            .img_back {
+                transform: rotateY(90deg);
+                transition-delay: 0s;
+            }
+        }
+    }
+}
